@@ -1,5 +1,7 @@
 # useful code snippets
 
+Not very useful by themselves, but can easily be added to larger notebooks. 
+
 ### color_gradient
 
 This snippet is for automatically generating a color gradient.
