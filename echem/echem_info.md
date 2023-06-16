@@ -8,7 +8,7 @@ This notebook is for importing chronopotentiometry data collected from a Biologi
 
 Chronopotentiometry data files, should be in the .mpr format
 
-**Outputs:** 
+**Output:** 
 
 Separates individual CP curves based on cycle length and stores each curve as a list entry.
 
@@ -24,7 +24,7 @@ This notebook is for importing electrochemical impedance spectroscopy data colle
 
 EIS data files, should be in the .mpr format
 
-**Outputs:** 
+**Output:** 
 
 Sorts datasets chronologically. 
 
