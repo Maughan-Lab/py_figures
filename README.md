@@ -1,5 +1,5 @@
 # py_figures
-Jupyter notebooks for making nice figures
+Jupyter notebooks for making nice figures --
 Written by Sinclair Combs
 
 XRD Refinement Figure Generators
