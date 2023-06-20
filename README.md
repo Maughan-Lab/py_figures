@@ -3,20 +3,17 @@ Jupyter notebooks for making nice figures
 
 Author: Sinclair R. Combs
 
+***NOTE:*** You need to have the file py_figures_functions.py saved to the same directory as your Jupyter notebooks
+
 XRD Refinement Figure Generators
-  - XRD_refinement.ipynb --
-    plots XRD data, calculated fit, and difference curves
-  - XRD_refinement_single_set_hkl.ipynb --
-    plots XRD data, calculated fit, difference, and (hkl) reflections within the same plot
-  - XRD_refinement_hkl_subplot.ipynb --
-    plots XRD data, calculated fit, and difference curves in one plot and (hkl) reflections as a subplot
-  - XRD_file_directory.ipynb --
-    pulls large batches of XRD data from a file directory for plotting
+  - XRD_refinement
+  - XRD_refinement_single_set_hkl
+  - XRD_refinement_hkl_subplot
+  - XRD_file_directory
 
 Electrochemical Data Figure Generators
-  - Echem_Biologic_data.ipynb --
-    plots chronopotentiometry and impedence data from Biologic potentiostat files
+  - biologic_data_CP
+  - biologic_data_EIS
 
 Pair Distribution Function Figure Generators
-  - PDF_refinement.ipynb --
-  plot PDF data, calculated fit, and difference curves
+  - PDF_refinement
