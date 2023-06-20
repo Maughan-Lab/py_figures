@@ -1,22 +1,12 @@
 # X-ray diffraction figures
 
-See snippet folder for 2theta to Q conversion.
-
 ### XRD_refinement 
 
 This notebook is for plotting experimental and calculated X-ray diffraction.
 
 **Input:** 
 
-Diffraction data files. Assumes files include 2theta or Q, experimental intensity, calculated intensity, difference curve, and error as column variables.
-
-**Output:** 
-
-Typical plotting capabilities. Can include a difference curve. User must manually adjust text location and axis scales if needed.
-
-**Optional:**
-
-Reformat axis value (i.e., 250 on axis "Intensity (counts x10^3)" instead of 250,000 on axis "Intensity (counts")
+Diffraction data files.
 
 
 
@@ -26,19 +16,9 @@ This notebook is for plotting experimental and calculated X-ray diffraction with
 
 **Input:** 
 
-Diffraction data files. Assumes files include 2theta or Q, experimental intensity, calculated intensity, difference curve, and error as column variables.
+Diffraction data files.
 
 Table of (hkl) values. Assumes files include h, k, l, and 2theta as column variables.
-
-**Output:** 
-
-Typical plotting capabilities. Can include a difference curve. User must manually adjust text location and axis scales if needed.
-
-Displays (hkl) ticks underneath the plotted data, may need to adjust scale.
-
-**Optional:**
-
-Reformat axis value (i.e., 250 on axis "Intensity (counts x10^3)" instead of 250,000 on axis "Intensity (counts")
 
 
 
@@ -48,19 +28,9 @@ This notebook is for plotting experimental and calculated X-ray diffraction with
 
 **Input:** 
 
-Diffraction data files. Assumes files include 2theta or Q, experimental intensity, calculated intensity, difference curve, and error as column variables.
+Diffraction data files.
 
 Table of (hkl) values for each structure set. Assumes files include h, k, l, and 2theta as column variables.
-
-**Output:** 
-
-Typical plotting capabilities. Can include a difference curve. User must manually adjust text location and axis scales if needed.
-
-Displays (hkl) ticks in a subplot underneath the plotted data, may need to adjust scale.
-
-**Optional:**
-
-Reformat axis value (i.e., 250 on axis "Intensity (counts x10^3)" instead of 250,000 on axis "Intensity (counts")
 
 
 
@@ -68,18 +38,8 @@ Reformat axis value (i.e., 250 on axis "Intensity (counts x10^3)" instead of 250
 
 This notebook is for importing large amounts of data from a local directory. All other functionality is the same as XRD_refinement.
 
-Assumes diffraction data are .xye files with Q, intensity, and error as column variables.
-
 **Input:** 
 
 Path to working directory (can import multiple)
-
-**Output:** 
-
-Variable dictionaries with unique names (Q_n, signal_n, err_n) to store data from all files in one data type dictionary (i.e., Q_var_dict)
-
-Typical plotting capabilities. Can include a difference curve. User must manually adjust text location and axis scales if needed.
-
-**Optional:**
 
 Reformat axis value (i.e., 250 on axis "Intensity (counts x10^3)" instead of 250,000 on axis "Intensity (counts")
