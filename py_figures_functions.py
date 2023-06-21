@@ -6,6 +6,7 @@ import numpy as np
 from colour import Color
 import matplotlib.pyplot as plt
 import glob
+import eclabfiles as ecf
 
 #------------------------------------------------------------------------------
 # 2THETA <--> Q CONVERSIONS
@@ -159,6 +160,14 @@ def sep_eis_cycles(df, cycle_pts):
     
     return EIS_cycles, num_cycles
 
+def import_biologic_EIS(path):
+    file = input("Data file: ")
+    filepath = path + file + ".mpr"
+        
+    EIS_data = ecf.to_df(filepath)
+        
+    return EIS_data
+
 #------------------------------------------------------------------------------
 # CP PLOTTING
 # parameters:
@@ -192,18 +201,144 @@ def sep_cp_cycles(pos_df, neg_df, cycle_pts):
     
     return CP_cycles_pos, CP_cycles_neg, num_cycles_pos, num_cycles_neg
 
+def import_biologic_CP(path):
+    pfile = input("Positive CP data file: ")
+    nfile = input("Neagtive CP data file: ")
+    pfilepath = path + pfile + ".mpr"
+    nfilepath = path + nfile + ".mpr"
+        
+    pos_CP = ecf.to_df(pfilepath)
+    neg_CP = ecf.to_df(nfilepath)
+        
+    return pos_CP, neg_CP
 
+#------------------------------------------------------------------------------
+# XRD PLOTTING
 
+def import_XRD(num_imports, path, header_length, hasCalc=False):
+    tt_dict = {}
+    y_obs_dict = {}
+    sig_dict = {}
+    y_calc_dict = {}
+    diff_dict = {}
+    
+    for i in range(0, num_imports):
+        file = input("Data file " + str(i) + ": ")
+        tag = input("Data Tag: ")
+        filepath = path + file + ".xye"
+        
+        if hasCalc == False:
+            tt, y_obs, sig = np.loadtxt(filepath, unpack=True, dtype=float, 
+                                        skiprows=header_length)
+        elif hasCalc == True:
+            tt, y_obs, sig, y_calc, diff = np.loadtxt(filepath, unpack=True, 
+                                                  dtype=float, 
+                                                  skiprows=header_length)
+        
+        tt_dict[tag] = tt
+        y_obs_dict[tag] = y_obs
+        sig_dict[tag] = sig
+        if hasCalc == True:
+            y_calc_dict[tag] = y_calc
+            diff_dict[tag] = diff
+        
+    return tt_dict, y_obs_dict, sig_dict, y_calc_dict, diff_dict
 
+def import_hkl(num_imports, path):
+    h_dict = {}
+    k_dict = {}
+    l_dict = {}
+    tt_theor_dict = {}
+    i_theor_dict = {}
+    
+    for i in range(0, num_imports):
+        file = input("hkl file " + str(i) + ": ")
+        tag = input("hkl Tag: ")
+        filepath = path + file + ".txt"
+        
+        h, k, l, tt_theor = np.loadtxt(filepath, unpack=True,
+                                       dtype=float, skiprows=1)
+        
+        h_dict[tag] = h
+        k_dict[tag] = k
+        l_dict[tag] = l
+        tt_theor_dict[tag] = tt_theor
+    
+    return h_dict, k_dict, l_dict, tt_theor_dict
 
+def q_dict(tt_dict, wl):
+    q_dict = {}
 
+    for i in tt_dict.keys():
+        q_dict[i] = tt_to_q(tt_dict[i], wl)
+        
+    return q_dict
 
+def subLabels(num):
+    subLabels = []
+    for i in range(0, num):
+        label = input("Substitution fraction for plot " + str(i) + ": ")
+        txt_label = "x = " + label
+        subLabels.append(txt_label)
 
+    return subLabels
 
+def hkl_labels(num):
+    hkl_labels = []
+    
+    hkl_colors = []
+    blue = "#0D35FC"
+    darkblue = "#310BD9"
+    purple = "#8000F0"
+    pink = "#C10BD9"
+    hotpink = "#FA008E"
+    
+    for i in range(0, num):
+        label = input("hkl label for set" + str(i) + ": ")
+        hkl_labels.append(label)
+        
+        label_color = "#BEBEBE"
+        color = input("Color (blue[1], darkblue[2], purple[3], \
+                      pink[4], hotpink[5], or input hex # [6]): ")
+        color = int(color)
+        if color == 1:
+            label_color = blue
+        elif color == 2:
+            label_color = darkblue
+        elif color == 3:
+            label_color = purple
+        elif color == 4:
+            label_color = pink
+        elif color == 5:
+            label_color = hotpink
+        elif color == 6:
+            label_color = input("Enter hex #: ")
+        hkl_colors.append(label_color)
+        
+    return hkl_labels, hkl_colors
 
+#------------------------------------------------------------------------------
+# PDF PLOTTING
 
-
-
-
+def import_PDF(num_imports, path, header_length):
+    r_dict = {}
+    G_dict = {}
+    Gdiff_dict = {}
+    Gcalc_dict = {}
+    
+    for i in range(0, num_imports):
+        file = input("Data file " + str(i) + ": ")
+        tag = input("Data Tag: ")
+        filepath = path + file + ".txt"
+        
+        r, G, Gdiff, Gcalc = np.loadtxt(filepath, unpack=True, dtype=float, 
+                                    skiprows=header_length)
+        
+        r_dict[tag] = r
+        G_dict[tag] = G
+        Gdiff_dict[tag] = Gdiff
+        Gcalc_dict[tag] = Gcalc
+        
+    return r_dict, G_dict, Gdiff_dict, Gcalc_dict
 
 
