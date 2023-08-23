@@ -437,15 +437,14 @@ def single_fit(x, obs, calc, diff, x_lim, y_lim, isQ=True, Q_wl=None,
     
     fig, (ax)=plt.subplots(1,figsize=(7,7))
     
-    marker_style = dict(marker="o", markersize=8, markerfacecolor="white", markeredgecolor="black")
     
     if fit_color == False:
         fit_color = "#00B8FF"
     
     # plot XRD data
-    ax.plot(x, obs, color="white", label="Observed",  **marker_style)
+    ax.scatter(x, obs, label="Observed",  markersize=4)
     ax.plot(x, calc, color=fit_color, label="Calculated", linewidth=2)
-    ax.plot(x, diff, color="#BEBEBE", label="Difference", linewidth=2)
+    ax.plot(x, diff-np.max(diff), color="#BEBEBE", label="Difference", linewidth=2)
 
     # set axis limits
     ax.set_xlim(x_lim)
