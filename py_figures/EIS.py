@@ -514,12 +514,8 @@ def plot_R(num_cycles, R_vals, x_lim, y_lim, color=False, marker=False):
     ax.plot(cycle_count, R_vals, color=color, marker=marker, markersize="8")
     
     # set axis limits
-    ax.set_xlim(x_lim)
+    ax.set_xlim(cycle_count[0]-0.9, cycle_count[-1]+0.9)
     ax.set_xlim(y_lim)
-    
-    # format x axis
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(2))
-    ax.xaxis.set_minor_locator(ticker.MultipleLocator(1))
     
     # set axis labels 
     y_label = "Resistance (" + labelprefix(y_lim[1]) + "$\Omega$)"
