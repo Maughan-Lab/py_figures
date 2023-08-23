@@ -442,7 +442,7 @@ def single_fit(x, obs, calc, diff, x_lim, y_lim, isQ=True, Q_wl=None,
         fit_color = "#00B8FF"
     
     # plot XRD data
-    ax.scatter(x, obs, label="Observed",  markersize=4)
+    ax.scatter(x, obs, color="black", label="Observed", marker=".", s=8)
     ax.plot(x, calc, color=fit_color, label="Calculated", linewidth=2)
     ax.plot(x, diff-np.max(diff), color="#BEBEBE", label="Difference", linewidth=2)
 
@@ -545,15 +545,13 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
     
     fig, (ax) = plt.subplots(3, 1, figsize=(9,6), gridspec_kw={'height_ratios': [4, 0.5, 1.25]})
     
-    marker_style = dict(marker="o", markersize=8, markerfacecolor="white", markeredgecolor="black")
-    
     if fit_color == False:
         fit_color = "#00B8FF"
     if hkl_color == False:
         hkl_color = "#97DB4F"
     
     # plot XRD data
-    ax[0].plot(x, obs, color="white", label="Observed",  **marker_style)
+    ax[0].scatter(x, obs, color="black", label="Observed", marker=".", s=8)
     ax[0].plot(x, calc, color=fit_color, label="Calculated", linewidth=2)
     
     # plot hkl
@@ -563,7 +561,7 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
         ax[1].plot(x_range, y_range, color=hkl_color)
     
     # plot difference
-    ax[2].plot(x, diff, color="#BEBEBE", label="Difference", linewidth=2)
+    ax[2].plot(x, diff-np.max(diff), color="#BEBEBE", label="Difference", linewidth=2)
 
     # set axis limits
     for i in range(2):
@@ -648,8 +646,6 @@ def stacked_single_plot(x_lim, y_lim, num, x_vals, y_vals, spacing, ycalc_vals=N
     
     fig, (ax) = plt.subplots(1,figsize=(7,7))
     
-    marker_style = dict(marker="o", markersize=8, markerfacecolor="white", markeredgecolor="black")
-    
     # generate color gradient
     if start_hex == False:
         start_hex = "#00C6BF"
@@ -663,7 +659,7 @@ def stacked_single_plot(x_lim, y_lim, num, x_vals, y_vals, spacing, ycalc_vals=N
             ax.plot(x_vals[i], y_vals[i] + (i * spacing), color=g[i], linewidth="2")
     elif ycalc_vals is not None:
         for i in range(num):
-            ax.plot(x_vals[i], y_vals[i] + (i * spacing), color="white",  **marker_style)
+            ax.scatter(x_vals[i], y_vals[i] + (i * spacing), color="black", label="Observed", marker=".", s=8)
             ax.plot(x_vals[i], ycalc_vals[i] + (i * spacing), color=g[i], linewidth="2")
             
     # set axis limits
@@ -747,8 +743,6 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
     elif diff is not None:
         fig, (ax) = plt.subplots(num, 1, figsize=(num*4,8))
     
-    marker_style = dict(marker="o", markersize=8, markerfacecolor="white", markeredgecolor="black")
-    
     # generate color gradient
     if start_hex == False:
         start_hex = "#00C6BF"
@@ -758,8 +752,10 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
     
     # plot data
     for i in range(num):
-        ax[i].plot(x_vals[i], y_vals[i], color="white",  **marker_style)
+        ax[i].scatter(x_vals[i], y_vals[i], color="black", label="Observed", marker=".", s=8)
         ax[i].plot(x_vals[i], ycalc_vals[i], color=g[i], linewidth="2")
+        if diff is not None:
+            ax[i].plot(x_vals[i], diff[i]-np.max(diff), color="#BEBEBE", linewidth="1")
 
     # set axis limits
     for i in range(num):
