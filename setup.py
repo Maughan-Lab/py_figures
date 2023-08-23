@@ -6,6 +6,6 @@ setup(
    version='0.1',
    author='Sinclair Combs',
    author_email='sinclaircombs@mines.edu',
-   packages=['py_figures']
+   packages=['py_figures'],
    description='Py Figures'
 )
