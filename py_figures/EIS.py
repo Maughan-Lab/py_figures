@@ -447,7 +447,7 @@ def plot_multicycle(num_cycles, expt_re, expt_im, fit_re, fit_im, x_lim, start_h
         start_hex = "#00C6BF"
     if end_hex == False:
         end_hex = "#B430C2"
-    g = list(Color(start_hex).range_to(Color(end_hex), num_cycles))
+    g = gradient_gen(start_hex, end_hex, num_cycles)
     
     marker_style = dict(marker="o", markersize=5, markerfacecolor="white", markeredgecolor="black")
     
