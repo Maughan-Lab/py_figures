@@ -190,7 +190,7 @@ Functions in this section:
 
 
 #------------------------------------------------------------------------------
-def import_biologic_CP(path):
+def import_biologic_CP(pos, neg, path):
     '''
     Import CP data from biologic .mpr file
 
@@ -198,6 +198,10 @@ def import_biologic_CP(path):
     ----------
     path : str
         File directory path
+    pos : str
+        File name of positive CP data
+    neg : str
+        File name of negative CP data
 
     Returns
     -------
@@ -207,10 +211,8 @@ def import_biologic_CP(path):
         Full positive CP dataset
 
     '''
-    pfile = input("Positive CP data file: ")
-    nfile = input("Neagtive CP data file: ")
-    pfilepath = path + pfile + ".mpr"
-    nfilepath = path + nfile + ".mpr"
+    pfilepath = path + pos + ".mpr"
+    nfilepath = path + neg + ".mpr"
         
     pos_CP = ecf.to_df(pfilepath)
     neg_CP = ecf.to_df(nfilepath)
