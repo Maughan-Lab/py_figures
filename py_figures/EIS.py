@@ -579,9 +579,9 @@ def plot_sigC(plot, sig_C_vals, pos, box_color):
 #------------------------------------------------------------------------------
 ''' EIS PLOT FORMATTING
 Functions in this section:
-    - EIS_expt_info
-    - EIS_singlecycle_info
-    - EIS_labels_list
+    - expt_info
+    - singlecycle_info
+    - labels_list
     - params_list
     - sig_cap_text '''
 #------------------------------------------------------------------------------
@@ -589,7 +589,7 @@ Functions in this section:
 
 
 #------------------------------------------------------------------------------
-def EIS_expt_info(curr_dens, num_cycles):
+def expt_info(curr_dens, num_cycles):
     '''
     Generates string with EIS experiment info
 
@@ -610,7 +610,7 @@ def EIS_expt_info(curr_dens, num_cycles):
     return expt_info
 
 #------------------------------------------------------------------------------
-def EIS_singlecycle_info(curr_dens, cycle, num_cycles):
+def singlecycle_info(curr_dens, cycle, num_cycles):
     '''
     Generates string with EIS experiment info of a single cycle
 
@@ -633,7 +633,7 @@ def EIS_singlecycle_info(curr_dens, cycle, num_cycles):
     return expt_info
 
 #------------------------------------------------------------------------------
-def EIS_labels_list(num_list):
+def labels_list(num_list):
     '''
     Create list of parameter values in scientific notation
 
