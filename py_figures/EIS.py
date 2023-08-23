@@ -349,8 +349,8 @@ def import_param_vals(path, fn, num_cycles):
 #------------------------------------------------------------------------------
 ''' EIS PLOTTING 
 Functions in this section:
-    - EIS_plot_singlecycle
-    - EIS_plot_multicycle
+    - plot_singlecycle
+    - plot_multicycle
     - plot_R
     - plot_fit_params
     - plot_sigC '''
@@ -359,7 +359,7 @@ Functions in this section:
 
 
 #------------------------------------------------------------------------------
-def EIS_plot_singlecycle(expt_re, expt_im, fit_re, fit_im, fit_color, x_lim):
+def plot_singlecycle(expt_re, expt_im, fit_re, fit_im, fit_color, x_lim):
     '''
     Generate plot with one EIS cycle
 
@@ -412,7 +412,7 @@ def EIS_plot_singlecycle(expt_re, expt_im, fit_re, fit_im, fit_color, x_lim):
     return(ax)
 
 #------------------------------------------------------------------------------
-def EIS_plot_multicycle(num_cycles, expt_re, expt_im, fit_re, fit_im, x_lim, start_hex=False, end_hex=False):
+def plot_multicycle(num_cycles, expt_re, expt_im, fit_re, fit_im, x_lim, start_hex=False, end_hex=False):
     '''
     Generate plot with multiple EIS cycles
 
@@ -514,8 +514,12 @@ def plot_R(num_cycles, R_vals, x_lim, y_lim, color=False, marker=False):
     ax.plot(cycle_count, R_vals, color=color, marker=marker, markersize="8")
     
     # set axis limits
-    ax.set_xlim(cycle_count[0]-0.9, cycle_count[-1]+0.9)
-    ax.set_xlim(y_lim)
+    ax.set_xlim(x_lim)
+    ax.set_ylim(y_lim)
+    
+    # format x axis
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(2))
+    ax.xaxis.set_minor_locator(ticker.MultipleLocator(1))
     
     # set axis labels 
     y_label = "Resistance (" + labelprefix(y_lim[1]) + "$\Omega$)"
