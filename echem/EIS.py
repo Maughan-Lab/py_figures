@@ -4,6 +4,7 @@ Electrochemical impedence spectroscopy plotting functions
 
 import eclabfiles as ecf
 import numpy as np
+import glob
 
 from colour import Color
 import matplotlib.pyplot as plt
@@ -20,6 +21,87 @@ rc("text.latex",preamble=r"\usepackage{sfmath}")
 ''' GENERAL PLOTTING FUNCTIONS '''
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------
+def import_file(path, fn, header_rows):
+    '''
+    Imports a data file
+
+    Parameters
+    ----------
+    path : str
+        File directory path
+    fn : str
+        File name
+    header_rows : int
+        Number of rows of metadata at beginning of file
+
+    Returns
+    -------
+    list
+        Each column in file returned as a separate list
+
+    '''
+    return np.loadtxt(path+fn, unpack=True, dtype=float, skiprows=header_rows)
+
+#------------------------------------------------------------------------------
+def import_dir(path, filetype=None):
+    '''
+    Imports a file directory
+
+    Parameters
+    ----------
+    path : str
+        File directory path
+    filetype : str, optional
+        Add file extension if you only want to import one type. The default is None.
+
+    Returns
+    -------
+    list_files : list (str)
+        Files names
+
+    '''
+    
+    '''
+    path (str) -- directory path
+    filetype (str, optional) -- specify file extenstion
+    
+    returns list of files
+    '''
+    if filetype is not None:
+        list_files = glob.glob(path + "/" + filetype)
+    else:
+        list_files = glob.glob(path + "/*")
+    return list_files
+
+#------------------------------------------------------------------------------
+def gradient_gen(start_hex, end_hex, num):
+    '''
+    Generates color gradient
+
+    Parameters
+    ----------
+    start_hex : str
+        Hex code for first gradient color, format "#000000"
+    end_hex : str
+        Hex code for final gradient color, format "#000000"
+    num : int
+        Number of colors to generate
+
+    Returns
+    -------
+    colors_list : list (Color)
+        Hex codes, will need to use .hex() to retrieve as string
+
+    '''
+    start_color = Color(start_hex)
+    end_color = Color(end_hex)
+    
+    colors_list = list(start_color.range_to(end_color, num))
+    
+    return colors_list
 
 #------------------------------------------------------------------------------
 def reformat_ticks(tick_val, pos):
