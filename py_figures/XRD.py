@@ -593,7 +593,7 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
     ax[0].set_ylabel(y_label, fontsize=16)
     
     # add legend
-    ax.legend([obs, calc, diff], handlelength=1, fontsize="14")
+    ax[0].legend([obs, calc, diff], handlelength=1, fontsize="14")
     
     plt.subplots_adjust(hspace=0.05)
     
