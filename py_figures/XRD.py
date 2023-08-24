@@ -7,7 +7,6 @@ from colour import Color
 import glob, os
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
-import matplotlib.lines as mlines
 
 from matplotlib.pyplot import rc
 rc("text", usetex=True)
@@ -270,7 +269,8 @@ def save_fig(plot, path, fn):
 Functions in this section:
     - var_dicts 
     - diff_curve
-    - export_diff '''
+    - export_diff 
+    - norm '''
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
@@ -387,6 +387,25 @@ def export_diff(x, y, path, fn):
         for (x, y) in zip(x, y):
             f.write("{0} {1}\n".format(x, y))
     f.close()
+
+#------------------------------------------------------------------------------
+def norm(ints):
+    '''
+    Normalize intensity values
+
+    Parameters
+    ----------
+    ints : list (float)
+        Original intensity values
+
+    Returns
+    -------
+    norm_ints : list (float)
+        Normalized intensity values
+
+    '''
+    norm_ints = (ints / np.max(ints))
+    return norm_ints
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
