@@ -458,7 +458,7 @@ def single_fit(x, obs, calc, diff, x_lim, y_lim, isQ=True, Q_wl=None,
     if isQ == False:
         x_label = r"2$\theta$ / $^{circ}$ (Cu K$\alpha$)"
     elif isQ == True:
-        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + "\AA)"
+        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + " \AA)"
     
     y_exp = labelexp(y_lim[1])
     if isNorm == False:
@@ -561,7 +561,7 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
         ax[1].plot(x_range, y_range, color=hkl_color)
     
     # plot difference
-    ax[2].plot(x, diff-np.max(diff), color="#BEBEBE", label="Difference", linewidth=1)
+    ax[2].plot(x, diff, color="#BEBEBE", label="Difference", linewidth=1)
 
     # set axis limits
     for i in range(2):
@@ -581,7 +581,7 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
     if isQ == False:
         x_label = r"2$\theta$ / $^{circ}$ (Cu K$\alpha$)"
     elif isQ == True:
-        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + "\AA)"
+        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + " \AA)"
     
     y_exp = labelexp(data_y_lim[1])
     if isNorm == False:
@@ -674,7 +674,7 @@ def stacked_single_plot(x_lim, y_lim, num, x_vals, y_vals, spacing, ycalc_vals=N
     if isQ == False:
         x_label = r"2$\theta$ / $^{circ}$ (Cu K$\alpha$)"
     elif isQ == True:
-        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + "\AA)"
+        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + " \AA)"
     
     y_exp = labelexp(y_lim[1])
     if isNorm == False:
@@ -770,7 +770,7 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
     if isQ == False:
         x_label = r"2$\theta$ / $^{circ}$ (Cu K$\alpha$)"
     elif isQ == True:
-        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + "\AA)"
+        x_label = "Q (\AA" r"$^{-1}$, $\lambda=$" + str(Q_wl) + " \AA)"
     
     y_exp = labelexp(y_lim[1])
     if isNorm == False:
