@@ -676,11 +676,11 @@ def stacked_single_plot(x_lim, y_lim, num, x_vals, y_vals, spacing, ycalc_vals=N
     # plot data
     if ycalc_vals is None:
         for i in range(num):
-            ax.plot(x_vals[i], y_vals[i] + (i * spacing), color=g[i], linewidth="2")
+            ax.plot(x_vals[i], y_vals[i] + (i * spacing), color=g[i].hex, linewidth="2")
     elif ycalc_vals is not None:
         for i in range(num):
             ax.scatter(x_vals[i], y_vals[i] + (i * spacing), color="black", label="Observed", marker=".", s=8)
-            ax.plot(x_vals[i], ycalc_vals[i] + (i * spacing), color=g[i], linewidth="2")
+            ax.plot(x_vals[i], ycalc_vals[i] + (i * spacing), color=g[i].hex, linewidth="2")
             
     # set axis limits
     ax.set_xlim(x_lim)
@@ -709,7 +709,7 @@ def stacked_single_plot(x_lim, y_lim, num, x_vals, y_vals, spacing, ycalc_vals=N
     if labels is not None:
         for i in range(num):
             ax.text(x_lim[1] - label_offsets[0], label_offsets[1] + (i * spacing),
-                    labels[i], color=g[i], fontsize="16")
+                    labels[i], color=g[i].hex, fontsize="16")
     
     return(ax) 
 
@@ -773,7 +773,7 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
     # plot data
     for i in range(num):
         ax[i].scatter(x_vals[i], y_vals[i], color="black", label="Observed", marker=".", s=8)
-        ax[i].plot(x_vals[i], ycalc_vals[i], color=g[i], linewidth="2")
+        ax[i].plot(x_vals[i], ycalc_vals[i], color=g[i].hex, linewidth="2")
         if diff is not None:
             ax[i].plot(x_vals[i], diff[i]-np.max(diff), color="#BEBEBE", linewidth="1")
 
@@ -805,7 +805,7 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
     if labels is not None:
         for i in range(num):
             ax[i].text(x_lim[1] - label_offsets[0], label_offsets[1],
-                    labels[i], color=g[i], fontsize="16")
+                    labels[i], color=g[i].hex, fontsize="16")
     
     return(ax)
         
