@@ -714,7 +714,7 @@ def stacked_single_plot(x_lim, y_lim, num, x_vals, y_vals, spacing, ycalc_vals=N
     return(ax) 
 
 #------------------------------------------------------------------------------
-def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
+def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals=None, diff=None,
                         labels=None, label_offsets=None, start_hex=False, 
                         end_hex=False, isQ=True, Q_wl=None, isNorm=False):
     '''
@@ -732,8 +732,8 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
         X-axis data (either Q or 2theta)
     y_vals : list (float)
         Observed intensities
-    ycalc_vals : list (float)
-        Calculated intensities
+    ycalc_vals : list (float), optional
+        Calculated intensities. The default is None.
     diff : list (float), optional
         Difference curve intensities. The default is None.
     labels : list (str), optional
@@ -771,11 +771,15 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
     g = gradient_gen(start_hex, end_hex, num)
     
     # plot data
-    for i in range(num):
-        ax[i].scatter(x_vals[i], y_vals[i], color="black", label="Observed", marker=".", s=8)
-        ax[i].plot(x_vals[i], ycalc_vals[i], color=g[i].hex, linewidth="2")
-        if diff is not None:
-            ax[i].plot(x_vals[i], diff[i]-np.max(diff), color="#BEBEBE", linewidth="1")
+    if ycalc_vals is None:
+        for i in range(num):
+            ax[i].plot(x_vals[i], y_vals[i], color=g[i].hex, linewidth="2")
+    elif ycalc_vals is not None:
+        for i in range(num):
+            ax[i].scatter(x_vals[i], y_vals[i], color="black", label="Observed", marker=".", s=8)
+            ax[i].plot(x_vals[i], ycalc_vals[i], color=g[i].hex, linewidth="2")
+            if diff is not None:
+                ax[i].plot(x_vals[i], diff[i]-np.max(diff), color="#BEBEBE", linewidth="1")
 
     # set axis limits
     for i in range(num):
@@ -806,6 +810,8 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
         for i in range(num):
             ax[i].text(x_lim[1] - label_offsets[0], label_offsets[1],
                     labels[i], color=g[i].hex, fontsize="16", ha="right", va="top")
+            
+    plt.subplots_adjust(hspace=0.05)
     
     return(ax)
         
