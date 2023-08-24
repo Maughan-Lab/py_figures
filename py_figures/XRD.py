@@ -709,7 +709,7 @@ def stacked_single_plot(x_lim, y_lim, num, x_vals, y_vals, spacing, ycalc_vals=N
     if labels is not None:
         for i in range(num):
             ax.text(x_lim[1] - label_offsets[0], label_offsets[1] + (i * spacing),
-                    labels[i], color=g[i].hex, fontsize="16")
+                    labels[i], color=g[i].hex, fontsize="16", ha="right", va="top")
     
     return(ax) 
 
@@ -805,7 +805,7 @@ def stacked_subplots(x_lim, y_lim, num, x_vals, y_vals, ycalc_vals, diff=None,
     if labels is not None:
         for i in range(num):
             ax[i].text(x_lim[1] - label_offsets[0], label_offsets[1],
-                    labels[i], color=g[i].hex, fontsize="16")
+                    labels[i], color=g[i].hex, fontsize="16", ha="right", va="top")
     
     return(ax)
         
