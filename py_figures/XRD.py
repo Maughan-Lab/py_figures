@@ -551,8 +551,8 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
         hkl_color = "#97DB4F"
     
     # plot XRD data
-    ax[0].scatter(x, obs, color="black", label="Observed", marker=".", s=8)
-    ax[0].plot(x, calc, color=fit_color, label="Calculated", linewidth=2)
+    obs = ax[0].scatter(x, obs, color="black", label="Observed", marker=".", s=8)
+    calc = ax[0].plot(x, calc, color=fit_color, label="Calculated", linewidth=2)
     
     # plot hkl
     for i in range(len(hkl_vals)):
@@ -561,7 +561,7 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
         ax[1].plot(x_range, y_range, color=hkl_color)
     
     # plot difference
-    ax[2].plot(x, diff, color="#BEBEBE", label="Difference", linewidth=1)
+    diff = ax[2].plot(x, diff, color="#BEBEBE", label="Difference", linewidth=1)
 
     # set axis limits
     for i in range(2):
@@ -593,7 +593,7 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
     ax[0].set_ylabel(y_label, fontsize=16)
     
     # add legend
-    ax.legend(handlelength=1, fontsize="14")
+    ax.legend([obs, calc, diff], handlelength=1, fontsize="14")
     
     plt.subplots_adjust(hspace=0.05)
     
