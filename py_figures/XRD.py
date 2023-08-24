@@ -564,7 +564,7 @@ def hkl_diff_subplots(x, obs, calc, diff, hkl_vals, x_lim, data_y_lim, diff_y_li
     diff = ax[2].plot(x, diff, color="#BEBEBE", label="Difference", linewidth=1)
 
     # set axis limits
-    for i in range(2):
+    for i in range(3):
         ax[i].set_xlim(x_lim)
         ax[i].yaxis.set_major_formatter(FuncFormatter(reformat_ticks))
         ax[i].tick_params(axis="both", labelsize="14")
