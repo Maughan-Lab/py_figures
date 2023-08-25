@@ -6,14 +6,21 @@ Author: Sinclair R. Combs
 Examples shown in Jupyter notebooks -- see examples folder.
 
 -----------------------------------------------------------
+Installation (Windows OS): 
 
-For installation, I recommend cloning this repo and running the setup.py file locally. 
+To install using pip from Anaconda terminal (recommended):
 
-On Windows OS in CLI: 
-- Navigate to directory where you want to store the repo clone
-- Enter "git clone https://github.com/Maughan-Lab/py_figures"
-- Enter "cd py_figures" to navigate into the new directory
-- Enter "python setup.py install" to install the package
+```pip install git+https://github.com/Maughan-Lab/pyfaults.git```
+
+To install from git clone in Windows terminal:
+
+1) Navigate to directory where you want to store the repo clone
+
+  ```git clone https://github.com/Maughan-Lab/py_figures```
+   
+2) Navigate to py_figures directory
+   
+```python setup.py install```
 
 -----------------------------------------------------------
 
