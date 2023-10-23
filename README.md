@@ -10,7 +10,7 @@ Installation (Windows OS):
 
 To install using pip from Anaconda terminal (recommended):
 
-```pip install git+https://github.com/Maughan-Lab/pyfaults.git```
+```pip install git+https://github.com/Maughan-Lab/py_figures.git```
 
 To install from git clone in Windows terminal:
 
